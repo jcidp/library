@@ -59,7 +59,7 @@ function displayBook(book) {
     let btnContainer = document.createElement("div");
     btnContainer.classList.add("btn-container");
     let readBtn = document.createElement("button");
-    readBtn.textContent = book.read ? "Not read" : "Read";
+    readBtn.textContent = book.read ? "Not Read" : "Read";
     readBtn.addEventListener("click", toggleBookRead);
     btnContainer.appendChild(readBtn);
     let btn = document.createElement("button");
