@@ -9,26 +9,31 @@
     <script src="scripts.js" defer></script>
 </head>
 <body>
+    <h1>My Library</h1>
     <main>
+        <div class="container">
+            <button id="new-book">+ New Book</button>    
+        </div>
         <div class="library">
         </div>
-        <button id="new-book">New Book</button>
         <form id="book-form" action="#">
-            <label for="title">Title: </label>
-            <input autocomplete="off" type="text" name="title" id="title">
-            <label for="author">Author: </label>
-            <input autocomplete="off" type="text" name="author" id="author">
-            <label for="pages">Pages: </label>
-            <input autocomplete="off" type="number" name="pages" id="pages">
-            <fieldset>
-                <legend>Have your read this book?</legend>
-                <label for="read">Yes</label>
-                <input checked autocomplete="off" type="radio" name="read" value="Yes" id="read">
-                <label for="unread">No</label>
-                <input autocomplete="off" type="radio" name="read" value="No" id="unread">
-            </fieldset>
-            <button id="add-book">Add Book</button>
-            <button id="close-popup">Cancel</button>
+            <div class="form-content">
+                <div class="text-inputs">
+                    <label for="title">Title: </label>
+                    <input autocomplete="off" type="text" name="title" id="title" maxlength="60">
+                    <label for="author">Author: </label>
+                    <input autocomplete="off" type="text" name="author" id="author" maxlength="60">
+                    <label for="pages">Pages: </label>
+                    <input autocomplete="off" type="number" name="pages" id="pages">
+                    <label for="read">I've read it: </label>
+                    <input type="checkbox" name="read" id="read">
+                </div>
+                <div class="form-btns">
+                    <button id="add-book">Add Book</button>
+                    <button id="close-popup">Cancel</button>
+                </div>
+                <p id="error-msg"></p>
+            </div>
         </form>
     </main>
 </body>
