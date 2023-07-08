@@ -2,9 +2,12 @@ let myLibrary = [];
 const library = document.querySelector(".library");
 const newBookBtn = document.getElementById("new-book");
 const bookFormBtn = document.getElementById("add-book");
+const bookForm = document.getElementById("book-form");
+const closeBtn = document.getElementById("close-popup");
 
 newBookBtn.addEventListener("click", displayBookForm);
 bookFormBtn.addEventListener("click", addBookToLibrary);
+closeBtn.addEventListener("click", closePopup);
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -34,16 +37,17 @@ function addBookToLibrary(e) {
     console.log(read);
     let newBook = new Book(title, author, pages, read === "Yes");
     myLibrary.push(newBook);
-    document.getElementById("book-form").reset();
     // Add to display
     displayBook(newBook);
     // Close pop-up
+    closePopup();
 }
 
 function displayLibrary() {
     myLibrary.forEach(book => {
         displayBook(book);
     });
+    resetLibraryIndexes();
 }
 
 function displayBook(book) {
@@ -72,7 +76,6 @@ function displayBook(book) {
 function removeBook(e) {
     let ele = e.target.closest(".book");
     let index = ele.getAttribute("data-library-index");
-    console.log(index);
     myLibrary.splice(index, 1);
     ele.remove();
     resetLibraryIndexes();
@@ -92,10 +95,14 @@ function toggleBookRead(e) {
     let index = bookContainer.getAttribute("data-library-index");
     myLibrary[index].read = !myLibrary[index].read;
     e.target.textContent = myLibrary[index].read ? "Not read" : "Read";
-    console.log(e.target.previousElementSibling.lastElementChild);
     e.target.previousElementSibling.lastElementChild.textContent = `read: ${myLibrary[index].read}`;
 }
 
 function displayBookForm(e) {
+    bookForm.style.display = "block";
+}
 
+function closePopup() {
+    bookForm.style.display = "none";
+    bookForm.reset();
 }

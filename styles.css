@@ -1,0 +1,13 @@
+main {
+    position: relative;
+}
+
+#book-form {
+    display: none;
+    position: absolute;
+    margin: 2em;
+    padding: 3em;
+    left: auto;
+    top: 0;
+    background-color: white;
+}
