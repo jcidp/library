@@ -31,32 +31,46 @@ function addBookToLibrary(e) {
     let author = bookFormData.get("author");
     let pages = bookFormData.get("pages");
     let read = bookFormData.get("read");
+    console.log(read);
     let newBook = new Book(title, author, pages, read === "Yes");
     myLibrary.push(newBook);
     document.getElementById("book-form").reset();
     // Add to display
-    let bookEle = document.createElement("ul");
-    for (let prop in newBook) {
-        if (prop === "info") continue;
-        let data = document.createElement("li");
-        data.textContent = `${prop}: ${newBook[prop]}`;
-        bookEle.appendChild(data);
-    }
-    library.appendChild(bookEle);
+    displayBook(newBook);
     // Close pop-up
 }
 
 function displayLibrary() {
     myLibrary.forEach(book => {
-        let bookEle = document.createElement("ul");
-            for (let prop in book) {
-                if (prop === "info") continue;
-                let data = document.createElement("li");
-                data.textContent = `${prop}: ${book[prop]}`;
-                bookEle.appendChild(data);
-            }
-        library.appendChild(bookEle);
+        displayBook(book);
     });
+}
+
+function displayBook(book) {
+    let bookContainer = document.createElement("div");
+    bookContainer.classList.add("book");
+    let bookEle = document.createElement("ul");
+    for (let prop in book) {
+        if (prop === "info") continue;
+        let data = document.createElement("li");
+        data.textContent = `${prop}: ${book[prop]}`;
+        bookEle.appendChild(data);
+    }
+    bookContainer.appendChild(bookEle);
+    let btn = document.createElement("button");
+    btn.textContent = "Remove";
+    btn.addEventListener("click", removeBook);
+    bookContainer.appendChild(btn);
+    bookContainer.setAttribute("data-library-index", myLibrary.length - 1);
+    library.appendChild(bookContainer);
+}
+
+function removeBook(e) {
+    let ele = e.target.closest(".book");
+    let index = ele.getAttribute("data-library-index");
+    console.log(index);
+    myLibrary.splice(index, 1);
+    ele.remove();
 }
 
 displayLibrary();
