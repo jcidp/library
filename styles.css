@@ -183,3 +183,7 @@ input {
         max-width: 80%;
     }
 }
+
+input:invalid {
+    border: 1px solid red;
+}

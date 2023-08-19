@@ -16,15 +16,15 @@
         </div>
         <div class="library">
         </div>
-        <form id="book-form" action="#">
+        <form id="book-form">
             <div class="form-content">
                 <div class="text-inputs">
-                    <label for="title">Title: </label>
-                    <input autocomplete="off" type="text" name="title" id="title" maxlength="60">
-                    <label for="author">Author: </label>
-                    <input autocomplete="off" type="text" name="author" id="author" maxlength="60">
-                    <label for="pages">Pages: </label>
-                    <input autocomplete="off" type="number" name="pages" id="pages">
+                    <label for="title">Title: *</label>
+                    <input autocomplete="off" type="text" name="title" id="title" maxlength="60" required>
+                    <label for="author">Author: *</label>
+                    <input autocomplete="off" type="text" name="author" id="author" maxlength="60" required>
+                    <label for="pages">Pages: *</label>
+                    <input autocomplete="off" type="number" name="pages" id="pages" required>
                     <label for="read">I've read it: </label>
                     <input type="checkbox" name="read" id="read">
                 </div>
